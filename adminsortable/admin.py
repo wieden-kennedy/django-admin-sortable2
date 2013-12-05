@@ -50,7 +50,7 @@ class SortableAdminMixin(SortableAdminBase):
 
     def __init__(self, model, admin_site):
         try:
-            order_field_index = getattr(model._meta, 'order_field_index', 0)
+            order_field_index = getattr(model, 'order_field_index', 0)
             self.default_order_field = model._meta.ordering[order_field_index]
         except (AttributeError, IndexError):
             raise ImproperlyConfigured(u'Model %s.%s requires a list or tuple "ordering" in its Meta class'
